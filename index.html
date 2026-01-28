@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Easy Earn Clicker</title>
     <style>
-        body { background: #111; color: white; text-align: center; font-family: sans-serif; }
-        #coin { width: 200px; cursor: pointer; margin-top: 50px; }
+        body { background: radial-gradient(circle, #2b2b2b, #111); color: white; text-align: center; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; justify-content: center; height: 100vh; overflow: hidden; }
+        .score-container { font-size: 45px; font-weight: bold; color: #ffcc00; margin-bottom: 20px; }
+        #coin { width: 220px; height: 220px; cursor: pointer; transition: transform 0.1s; -webkit-tap-highlight-color: transparent; }
+        #coin:active { transform: scale(0.9); }
     </style>
 </head>
 <body>
-    <h1>Score: <span id="score">0</span></h1>
-    <img id="coin" src="https://img.icons8.com/color/480/coin.png" onclick="tap()">
+    <div class="score-container">💰 <span id="score">0</span></div>
+    <div>
+        <img id="coin" src="https://img.icons8.com/color/480/hamster.png" alt="Tap">
+    </div>
     <script>
         let score = 0;
         function tap() {
             score++;
             document.getElementById('score').innerText = score;
         }
+        document.getElementById('coin').addEventListener('click', tap);
+        document.getElementById('coin').addEventListener('touchstart', (e) => { e.preventDefault(); tap(); });
     </script>
 </body>
 </html>
